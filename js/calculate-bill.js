@@ -5,7 +5,6 @@ var totalBillElement = document.querySelector(".billTotal");
 function totalPhoneBill(phoneBill){
     //split the string
     var billItems = phoneBill.split(", ");
-    console.log(billItems);
     
     var totalBill = 0.0;
     
@@ -23,26 +22,31 @@ function totalPhoneBill(phoneBill){
 }
 
 function calculateBtnClicked(){
-    // get the string entered in the textArea
+    // get the value string entered in the textArea
     var phoneBill = billField.value; 
-    console.log(phoneBill);
+    //get the total of the string call or sms.
     var billTotal = totalPhoneBill(phoneBill);
     
     //round to two decimals
     var roundedBillTotal = billTotal.toFixed(2);
 
+    //console.log(totalBillElement.className);
+
     if (roundedBillTotal > 30.00) {
-        totalBillElement.classList.toggle("danger");
+        totalBillElement.classList.replace(totalBillElement.className, "danger");
     }else if(roundedBillTotal > 20.00){
-        totalBillElement.classList.toggle("warning");
+        totalBillElement.classList.replace(totalBillElement.className, "warning");
+    }else{
+        totalBillElement.classList.replace(totalBillElement.className, "billTotal");
     }
+
+    //We set the billTotal to be the total of the string.
     totalBillElement.innerHTML = roundedBillTotal;
-    console.log();
 }
 
 calculateBtn.addEventListener('click', calculateBtnClicked)
 //test cases :
 //over 20:
-//call, call, call, call, call, call, call, call, call,
+//call, call, call, call, call, call, call, call, call
 //over 30
 //call, call, call, call, call, call, call, call, call, call, call, call, call, call, call, call
