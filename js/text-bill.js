@@ -12,20 +12,25 @@ var addButton = document.querySelector(".addToBillBtn");
 //add an event listener for when the add button is pressed
 addButton.addEventListener('click', function(){
 
+    var callTotal = 0.00;
+    var smsTotal = 0.00;
+
     var textValue = document.querySelector(".billTypeText").value;
     //console.log(textValue);
 
     if (textValue === 'call'){
         var currentCallTotal = parseFloat(totalBillCall.innerHTML);
         //console.log(currentCallTotal);
-        totalBillCall.innerHTML = 2.75 + currentCallTotal;
-        //console.log(totalBillCall);
+        callTotal = 2.75 + currentCallTotal;
+        console.log(callTotal);
+        totalBillCall.innerHTML = callTotal.toFixed(2);
     }
 
     if (textValue === 'sms'){
         var currentSmsTotal = parseFloat(totalBillSms.innerHTML);
         //console.log(currentSmsTotal);
-        totalBillSms.innerHTML = 0.75 + currentSmsTotal;
+        smsTotal = 0.75 + currentSmsTotal;
+        totalBillSms.innerHTML = smsTotal.toFixed(2);
     }
 
     var totalBills = parseFloat(totalBillCall.innerHTML)  + parseFloat(totalBillSms.innerHTML);

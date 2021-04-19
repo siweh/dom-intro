@@ -24,12 +24,13 @@ billAddBtn.addEventListener('click', function(){
         if (billItemType === 'call'){
             var currentCallTotal = parseFloat(totalCallBill.innerHTML);
             totalCall = 2.75 + currentCallTotal;
-            totalCallBill.innerHTML = totalCall;
+            totalCallBill.innerHTML = totalCall.toFixed(2);
         }else {
             var currentSmsTotal = parseFloat(totalSmsBill.innerHTML);
             //console.log(currentSmsTotal);
             totalSms = 0.75 + currentSmsTotal;
-            totalSmsBill.innerHTML = totalSms;
+            //console.log(totalSms);
+            totalSmsBill.innerHTML = totalSms.toFixed(2);
         }
     }
 
