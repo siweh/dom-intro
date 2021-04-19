@@ -1,103 +1,101 @@
+//get reference to the bills totals.
+var callTotalField = document.querySelector(".callTotalSettings");
+var smsTotalField = document.querySelector(".smsTotalSettings");
+var totalField = document.querySelector(".totalSettings");
+
 // get a reference to the sms or call radio buttons
+var callRadioBtn = document.querySelector(".billItemTypeWithSettings");
+var smsRadioBtn = document.querySelector(".billItemTypeWithSettings");
 
 // get refences to all the settings fields
-var callTotalSettingsField = document.querySelector(".callTotalSettings");
-var smsTotalSettingsField = document.querySelector(".smsTotalSettings");
-var totalSetting = document.querySelector(".totalSettings");
-var costCall = document.querySelector(".callCostSetting");
-var costSms = document.querySelector(".smsCostSetting");
-var levelWarningSetting = document.querySelector(".warningLevelSetting");
-var criticalSetting = document.querySelector(".criticalLevelSetting");
+var costCallSettingField = document.querySelector(".callCostSetting");
+var costSmsSettingField = document.querySelector(".smsCostSetting");
+var levelWarningSettingField = document.querySelector(".warningLevelSetting");
+var levelCriticalSettingField = document.querySelector(".criticalLevelSetting");
 
 //get a reference to the add button
+var addRadioButton = document.querySelector(".add-button-settings");
 
 //get a reference to the 'Update settings' button
-var updateSetting = document.querySelector(".updateSettings");
-var buttonBillAdd = document.querySelector(".add-button-settings");
+var updateBtn = document.querySelector(".updateSettings");
 
 // create a variables that will keep track of all the settings
-var settingsCallCost = 2.75;
-var settingsSMSCost = 0.75;
-var settingsWarningLevel = 30.00;
-var settingCriticalLevel = 50.00;
-// create a variables that will keep track of all three totals.
-var callsTotal = 0;
-var smsTotal = 0;
-var total = 0;
+var costCallSetting = 2.75;
+var costSmsSetting = 0.75;
+var warningLevelSetting = 30.00;
+var criticalLevelSetting = 50.00;
 
+// create a variables that will keep track of all three totals.
+var callTotal = 0;
+var smsTotal = 0;
+var overallTotal = 0;
 
 //add an event listener for when the 'Update settings' button is pressed
-updateSetting.addEventListener('click', function(){
-    if (costCall.value !== '') {
-        settingsCallCost = parseFloat(costCall.value);
+updateBtn.addEventListener('click', function(){
+    if (costCallSettingField.value !== ''){
+       costCallSetting = parseFloat(costCallSettingField.value);
+        //console.log(costCallSetting);
     }else{
-        settingsCallCost = 2.75;
+        costCallSetting = 2.75;
+        //console.log(costCallSetting);
     }
-    if(costSms.value !== ''){
-        settingsSMSCost = parseFloat(costSms.value);
+    if (costSmsSettingField.value !== ''){
+        costSmsSetting = parseFloat(costSmsSettingField.value);
     }else{
-        settingsSMSCost = 0.75;
+        costSmsSetting = 0.75;
     }
-    if (levelWarningSetting.value !== ''){
-        settingsWarningLevel = parseFloat(levelWarningSetting.value);
+    if (levelWarningSettingField.value !== ''){
+        warningLevelSetting = parseFloat(levelWarningSettingField.value);
     }else{
-        settingsWarningLevel = 30.00;
+        warningLevelSetting = 30.00;
     }
-    if (criticalSetting.value !== ''){
-        settingCriticalLevel = parseFloat(criticalSetting.value);
+    if (levelCriticalSettingField.value !== ''){
+        criticalLevelSetting = parseFloat(levelCriticalSettingField.value);
     }else{
-        settingCriticalLevel = 50.00;
+        criticalLevelSetting = 50.00;
     }
-    //console.log(settingCriticalLevel);
-    //console.log(settingsWarningLevel);
-    //console.log(settingsCallCost);
 })
-buttonBillAdd.addEventListener('click', function(){
-        //var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
-       var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
-        //console.log(checkedRadioBtn);
-    if (checkedRadioBtn){
-        var billItemTypeWithSettings = checkedRadioBtn.value;
-        //console.log(billItemTypeWithSettings);
-        if (totalSetting.className !== "danger") {
-            if (billItemTypeWithSettings === 'call'){
-                var currentCallTotal = parseFloat(callTotalSettingsField.innerHTML);
-                //console.log(currentCallTotal);
-                callsTotal = currentCallTotal + settingsCallCost;
-                //console.log(currentCallTotal + settingsCallCost);
-            }else{
-                var currentSmsTotal = parseFloat(smsTotalSettingsField.innerHTML);
-                smsTotal = currentSmsTotal + settingsSMSCost;
-                //console.log(currentSmsTotal + settingsSMSCost);   
-            }
-        }
 
-            var currentWarningLevel = parseFloat(levelWarningSetting.innerHTML);
-            //console.log(currentWarningLevel);
-            total = currentWarningLevel + settingsWarningLevel;
-            //console.log(total);
-
-            var currentCriticalLevel = parseFloat(criticalSetting.innerHTML);
-            //console.log(currentCriticalLevel);
-            total = currentCriticalLevel + settingCriticalLevel;
-            //console.log(total);
-
-        levelWarningSetting.innerHTML = total.toFixed(2);
-        criticalSetting.innerHTML = total.toFixed(2);
-        callTotalSettingsField.innerHTML = callsTotal.toFixed(2);
-        smsTotalSettingsField.innerHTML = smsTotal.toFixed(2);
-
-        var totalBills = parseFloat(callTotalSettingsField.innerHTML) + parseFloat(smsTotalSettingsField.innerHTML);
-        totalSetting.innerHTML = totalBills.toFixed(2);
-        //console.log(totalBills);
-        if (totalBills > settingCriticalLevel){
-            totalSetting.classList.replace(totalSetting.className, "danger");
-        }else if (totalBills > settingsWarningLevel){
-            totalSetting.classList.replace(totalSetting.className, "warning")
-        }
-   }
-})
 //add an event listener for when the add button is pressed
+addRadioButton.addEventListener('click', function(){
+    var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
+
+    if (checkedRadioBtn) {
+        var billItemTypeWithSettings = checkedRadioBtn.value;
+
+        if (totalField.innerHTML <= criticalLevelSetting) {
+            if (billItemTypeWithSettings == 'call'){
+                var currentCallsTotal = parseFloat(callTotalField.innerHTML);
+                callTotal = currentCallsTotal + costCallSetting;
+            }else{
+                var currentSmsTotal = parseFloat(smsTotalField.innerHTML);
+                smsTotal = currentSmsTotal + costSmsSetting;
+            } 
+        }   
+
+        var currentWarning = parseFloat(levelWarningSettingField.innerHTML);
+        overallTotal = currentWarning + warningLevelSetting;
+
+        var currentCritical = parseFloat(levelCriticalSettingField.innerHTML);
+        overallTotal = currentCritical + criticalLevelSetting;
+        
+
+        callTotalField.innerHTML = callTotal.toFixed(2);
+        smsTotalField.innerHTML = smsTotal.toFixed(2);
+
+        var totalBill = parseFloat(callTotalField.innerHTML) + parseFloat(smsTotalField.innerHTML);
+        totalField.innerHTML = totalBill.toFixed(2);
+
+        if (totalBill > criticalLevelSetting){
+            totalField.classList.replace(totalField.className, "danger");
+        }else if (totalBill> warningLevelSetting){
+            totalField.classList.replace(totalField.className, "warning");
+        }else{
+            totalField.classList.replace(totalField.className, "totalSettings");
+        }
+    }
+    
+})
 
 //in the event listener get the value from the billItemTypeRadio radio buttons
 // * add the appropriate value to the call / sms total
