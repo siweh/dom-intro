@@ -3,8 +3,11 @@ var billField = document.querySelector(".billString");
 var totalBillElement = document.querySelector(".billTotal");
 
 function totalPhoneBill(phoneBill){
+    //console.log(phoneBill);
+    //console.log(phoneBill.trim());
     //split the string
-    var billItems = phoneBill.split(", ");
+    var billItems = phoneBill.split(",");
+    console.log(billItems);
     
     var totalBill = 0.0;
     

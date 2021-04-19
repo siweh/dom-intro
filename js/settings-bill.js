@@ -54,6 +54,17 @@ updateBtn.addEventListener('click', function(){
     }else{
         criticalLevelSetting = 50.00;
     }
+
+    var totalBill = parseFloat(callTotalField.innerHTML) + parseFloat(smsTotalField.innerHTML);
+        totalField.innerHTML = totalBill.toFixed(2);
+
+    if (totalBill > criticalLevelSetting){
+        totalField.classList.replace(totalField.className, "danger");
+    }else if (totalBill> warningLevelSetting){
+        totalField.classList.replace(totalField.className, "warning");
+    }else{
+        totalField.classList.replace(totalField.className, "totalSettings");
+    }
 })
 
 //add an event listener for when the add button is pressed
