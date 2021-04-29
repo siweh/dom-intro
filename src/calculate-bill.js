@@ -7,8 +7,10 @@ var billTotalField = document.querySelector(".billTotal");
 //get a reference to the billString
 var billStringField = document.querySelector(".billString");
 
+const callCost = 2.75;
+const smsCost = 0.75;
 //create the function that will be called when the calculate button is pressed
-function totalPhoneBill(str){
+function calculateTotalPhoneBill(str){
     //console.log(str);
     //  * this function should read the string value entered - split it on a comma.
     var newStr = str.split(',');
@@ -18,10 +20,10 @@ function totalPhoneBill(str){
       var ans = newStr[i];
       //  * check if it is a call or an sms and add the right amount to the overall total
       if (ans === 'call'){
-        total += 2.75;
+        total += callCost;
       }
       if (ans === 'sms'){
-        total += 0.75;
+        total += smsCost;
       }
     }
     //  * once done looping over all the entries - display the total onto the screen in the billTotal element
@@ -33,7 +35,7 @@ function totalPhoneBill(str){
       // get the string entered in the textArea
       var stringEntered = billStringField.value;
       console.log(stringEntered);
-      var roundedBillTotal = totalPhoneBill(stringEntered);
+      var roundedBillTotal = calculateTotalPhoneBill(stringEntered);
       console.log(roundedBillTotal);
       //  *display the total onto the screen in the billTotal element
       billTotalField.innerHTML = roundedBillTotal;
