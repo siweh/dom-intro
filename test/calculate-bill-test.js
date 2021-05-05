@@ -49,7 +49,7 @@ describe("Calculate bill widget", function(){
             assert.equal('danger', calculateBill.getClassnamelevel(30.00));
         })
 
-        it("should not return warning or critical level, when the overall is less than warning or critical amount", function(){
+        it("should not return warning or critical level, when the overall total is less than warning or critical amount", function(){
             assert.equal('billTotal', calculateBill.getClassnamelevel(10.00));
         })
     });
