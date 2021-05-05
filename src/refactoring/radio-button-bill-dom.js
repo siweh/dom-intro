@@ -2,7 +2,7 @@ var billItemTypeRadioElement = document.querySelector(".billItemTypeRadio");
 var addRadioBtnBill = document.querySelector(".radioBillAddBtn");
 var callTotalElement = document.querySelector(".callTotalTwo");
 var smsTotalElement = document.querySelector(".smsTotalTwo");
-var overallTotalElement = document.querySelector(".totalTwo");
+var totalOverallElement = document.querySelector(".totalTwo");
 
  var calculateBills = CalculateRadioBill();
 function clickedAddRadioBtn(){
@@ -13,8 +13,8 @@ function clickedAddRadioBtn(){
     var levelChanges = calculateBills.getClassnameLevel(totalCost);
     callTotalElement.innerHTML = calculateBills.getTotalCall().toFixed(2);
     smsTotalElement.innerHTML = calculateBills.getTotalSms().toFixed(2);
-    overallTotalElement.innerHTML = totalCost.toFixed(2);
-    overallTotalElement.classList.replace(overallTotalElement.className, levelChanges);
+    totalOverallElement.innerHTML = totalCost.toFixed(2);
+    totalOverallElement.classList.replace(totalOverallElement.className, levelChanges);
 }
 
 addRadioBtnBill.addEventListener('click', clickedAddRadioBtn);
