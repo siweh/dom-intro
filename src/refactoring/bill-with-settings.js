@@ -1,8 +1,8 @@
 function CalculateBillsSettings(){
-    var callCost = 2.75;
-    var smsCost = 0.75;
-    var levelWarning = 30.00;
-    var levelCritical = 50.00;
+    var callCost = 0.00;
+    var smsCost = 0;
+    var levelWarning = 0.00;
+    var levelCritical = 0.00;
     var callCostTotal = 0.00;
     var smsCostTotal = 0.00;
 
