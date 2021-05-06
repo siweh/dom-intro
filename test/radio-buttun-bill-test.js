@@ -13,6 +13,7 @@ describe("Radio button bill widget", function(){
     })
 
     context("Without checked radio buttons", function(){
+        var calculateBills = CalculateRadioBill();
         it("the total cost should be 0.00", function(){
             //var calculateBills = CalculateRadioBill();
             //calculateBills.calculateBillTotal();
@@ -21,6 +22,7 @@ describe("Radio button bill widget", function(){
     });
 
     context("Warning and Critical level", function(){
+        var calculateBills = CalculateRadioBill();
         it("should return warning level when warning level is reached", function(){
             //warning level amount is R30.00
             calculateBills.calculateBillTotal();

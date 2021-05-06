@@ -4,7 +4,7 @@ var calculateBillBtn = document.querySelector(".calculateBtn");
 
 const calculateBill = CalculateBill();
 
-//console.log(calculateBillBtn);
+//console.log(calculateBill);
 
 function calculateBtnEvent(){
     calculateBill.calculateTotalCost(billTypeElement.value);

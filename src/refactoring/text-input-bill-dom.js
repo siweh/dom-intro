@@ -11,9 +11,11 @@ function addBbtnEvent(){
    calculateTextBill.calculateEnteredBillTotal(typeBillElement.value);
    var overallTotalBill = calculateTextBill.getOverallTotal();
    var classnameLevel = calculateTextBill.getClassnameLevel(overallTotalBill);
+
    callTotalTextElement.innerHTML = calculateTextBill.getCallTotal().toFixed(2);
    smsTotalTextElement.innerHTML = calculateTextBill.getSmsTotal().toFixed(2);
    ovarallTotalElement.innerHTML = overallTotalBill.toFixed(2);
+   
    ovarallTotalElement.classList.replace(ovarallTotalElement.className, classnameLevel);
 
 }

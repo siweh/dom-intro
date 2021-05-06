@@ -19,6 +19,7 @@ function clickedBtnAdd(){
     var overallTotal = calculateBillSettings.getOverallTotalSettings();
     var totalCallCost = calculateBillSettings.getCallCostTotal();
     var totalSMSCost = calculateBillSettings.getSmsCostTotal();
+    //console.log(totalSmsCost);
    
     var changingLevel = calculateBillSettings.getClassNameLevel(overallTotal);
 
